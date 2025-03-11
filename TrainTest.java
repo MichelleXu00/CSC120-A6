@@ -4,57 +4,66 @@ import org.junit.Test;
 public class TrainTest {
 
     // Engine Tests
+    Engine myEngine = new Engine(FuelType.ELECTRIC, 0.00, 100);
     @Test
     public void testEngineConstructor() {
-        fail();
+        assertSame(100, myEngine.getMaxFuel());
     }
 
     @Test
     public void testEngineGo() {
-        fail();
+        assertEquals(90, myEngine.go());
     }
 
     // Car Tests
+    Car myCar = new Car(100);
+    Passenger Michelle = new Passenger("Michelle");
+    Passenger Cathy = new Passenger("Cathy");
     @Test
     public void testCarAddPassenger() {
-        fail();
+        myCar.addPassenger(Michelle);
+        myCar.addPassenger(Cathy);
+        assertEquals(98, myCar.seatsRemaining());
     }
 
     @Test
     public void testCarRemovePassenger() {
-        fail();
+        myCar.removePassenger(Cathy);
+        assertEquals(99,myCar.seatsRemaining());
+        assertTrue(myCar.seatsRemaining() > 0);
     }
 
     // Passenger Tests
     @Test
     public void testPassengerBoardCarWithSpace() {
-        fail();
+        assertTrue(myCar.seatsRemaining() < 0);
     }
 
     @Test
     public void testPassengerBoardCarFull() {
-        fail();
+        assertTrue(myCar.seatsRemaining() <= 0);
     }
 
     // Train Tests
+    Train myTrain = new Train(FuelType.ELECTRIC, 100, 4, 250);
     @Test
     public void testTrainConstructor() {
-        fail();
+        assertEquals(4, myTrain.cars.size());
     }
 
     @Test
     public void testTrainPassengerCount() {
-        fail();
+        assertEquals(999,myTrain.seatsRemaining());
     }
 
     @Test
     public void testTrainGetCar() {
-        fail();
+        assertSame(myCar, myTrain.getCar(1));
     }
 
     @Test
     public void testTrainPrintManifest() {
-        fail();
+        assertEquals("Michelle", myTrain.printManifest());
     }
     
 }
