@@ -3,23 +3,36 @@ public class Passenger implements PassengerRequirements{
     //Attributes
     private String name;
 
-    //Constructor
+    /**
+     * Constructor
+     * @param name the passenger's name
+     */
     public Passenger(String name) {
         this.name = name;
     }
 
     /**
      * add the passenger to a car
+     * @param c the car that the passenger is getting onto
      */
     public void boardCar(Car c) {
-        c.addPassenger(this);
+        try {
+            c.addPassenger(this);
+        } catch (RuntimeException e) {
+            throw new RuntimeException (e);
+        }
     }
 
     /**
      * remove the passenger from a car
+     * @param c the car that the passenger is getting off from
      */
     public void getOffCar(Car c) {
-        c.removePassenger(this);
+        try {
+            c.removePassenger(this);
+        } catch (RuntimeException e) {
+            throw new RuntimeException (e);
+        }
     }
     
     public String toString() {

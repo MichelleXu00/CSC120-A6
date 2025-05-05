@@ -17,18 +17,18 @@ public class TrainTest {
 
     // Car Tests
     Car myCar = new Car(100);
-    Passenger Michelle = new Passenger("Michelle");
-    Passenger Cathy = new Passenger("Cathy");
+    Passenger michelle = new Passenger("Michelle");
+    Passenger cathy = new Passenger("Cathy");
     @Test
     public void testCarAddPassenger() {
-        myCar.addPassenger(Michelle);
-        myCar.addPassenger(Cathy);
+        myCar.addPassenger(michelle);
+        myCar.addPassenger(cathy);
         assertEquals(98, myCar.seatsRemaining());
     }
 
     @Test
     public void testCarRemovePassenger() {
-        myCar.removePassenger(Cathy);
+        myCar.removePassenger(cathy);
         assertEquals(99,myCar.seatsRemaining());
         assertTrue(myCar.seatsRemaining() > 0);
     }
@@ -63,7 +63,7 @@ public class TrainTest {
 
     @Test
     public void testTrainPrintManifest() {
-        assertEquals("Michelle", myTrain.printManifest());
+        assertSame(michelle, myTrain.getCar(0));
     }
     
 }

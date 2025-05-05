@@ -4,17 +4,23 @@ public class Car implements CarRequirements{
 
     //Attributes
     private ArrayList<Passenger> passengersOnboard;
-    private int MaxCapacity;
+    private int maxCapacity;
 
-    //Constructor
+    /**
+     * Constructor
+     * @param capacity the maximum capacity of the car
+     */
     public Car(int capacity) {
-        this.MaxCapacity = capacity;
+        this.maxCapacity = capacity;
         passengersOnboard = new ArrayList<>();
     }
 
-    //Accessor
+    /**
+     * Accessor
+     * @return the car's maximum capacity
+     */
     public int getCapacity() {
-        return this.MaxCapacity;
+        return this.maxCapacity;
     }
 
     /**
@@ -22,32 +28,33 @@ public class Car implements CarRequirements{
      * @return the number of seats left in the car
      */
     public int seatsRemaining() {
-        return this.MaxCapacity - passengersOnboard.size();
+        return this.maxCapacity - passengersOnboard.size();
     }
 
-    /**
+     /**
      * Onboard a passenger
+     * @param p the passenger boarding the car
      * @return T/F Is the passenger board to the car if there is seat available? 
      */
     public Boolean addPassenger(Passenger p) {
         if (seatsRemaining() > 0) {
-        passengersOnboard.add(p);
-        return true;
+            passengersOnboard.add(p);
+            return true;
+        } else {
+            return false;
         }
-        else {return false;}
     }
 
     /**
      * remove a passenger
+     * @param p 
      * @return T/F Does the passenger get off from the car if the person was on board? 
      */
     public Boolean removePassenger(Passenger p) {
         if (passengersOnboard.contains(p)) {
-        passengersOnboard.remove(p);
-        return true;
-        }
-        else {return false;}
-        
+            passengersOnboard.remove(p);
+            return true;
+        } return false;
     }
 
     /**
@@ -55,9 +62,10 @@ public class Car implements CarRequirements{
      */
     public void printManifest() {
         if (passengersOnboard.size() > 0) {
-        System.out.println(passengersOnboard);
+            System.out.println(passengersOnboard);
+        } else {
+            System.out.println("THis car is EMPTY");
         }
-        else {System.out.println("THis car is EMPTY");}
     }
 
 

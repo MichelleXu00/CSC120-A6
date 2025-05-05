@@ -5,15 +5,21 @@ public class Train implements TrainRequirements{
     //Attributes
     Engine myEngine;
     ArrayList<Car> cars;
-    int TrainCapacity;
-    int TrainseatsR;
+    int trainCapacity;
+    int trainSeatsR;
 
-    //Constructor
-    public Train(FuelType fueltype, double fuelcapacity, int nCars, int passengercapacity) {
-        myEngine = new Engine(fueltype, fuelcapacity, fuelcapacity);
-        cars = new ArrayList<>();
+    /**
+     * Constructor
+     * @param fuelType the type of fuel that the train's engine uses
+     * @param fuelCapacity the capacity of fuel tank of the train's engine
+     * @param nCars the number of cars composing the train
+     * @param passengerCapacity the train's total capacity of passengers
+     */
+    public Train(FuelType fuelType, double fuelCapacity, int nCars, int passengerCapacity) {
+        myEngine = new Engine(fuelType, fuelCapacity, fuelCapacity);
+        cars = new ArrayList<Car>();
         for (int i = 0; i < nCars; i++) {
-            cars.add(new Car(passengercapacity));
+            cars.add(new Car(passengerCapacity));
         }
     }
 
@@ -27,6 +33,7 @@ public class Train implements TrainRequirements{
 
     /**
      * allow access to each car from the arraylist of cars
+     * @param i the nth of car in the train
      * @return car
      */
     public Car getCar(int i) {
@@ -38,10 +45,10 @@ public class Train implements TrainRequirements{
      * @return number of people that can board the train
      */
     public int getMaxCapacity() {
+        trainCapacity = 0;
         for (int i = 0; i < cars.size(); i++) {
-            TrainCapacity += this.getCar(i).getCapacity();
-        }
-        return TrainCapacity;
+            trainCapacity += this.getCar(i).getCapacity();
+        } return trainCapacity;
     }
 
     /**
@@ -49,10 +56,10 @@ public class Train implements TrainRequirements{
      * @return number of seats available on the train
      */
     public int seatsRemaining() {
+        trainSeatsR = 0;
         for (int i = 0; i < cars.size(); i++) {
-            TrainseatsR += this.getCar(i).seatsRemaining();
-        }
-        return TrainseatsR;
+            trainSeatsR += this.getCar(i).seatsRemaining();
+        } return trainSeatsR;
     }
 
     /**

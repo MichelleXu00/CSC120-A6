@@ -5,24 +5,38 @@ public class Engine implements EngineRequirements {
     private double currentFuelLevel;
     private double maxFuelLevel;
 
-    //Constructor
+    /**
+     * Constructor
+     * @param f the type of fuel used by the engine
+     * @param currentFuelLevel the current level of fuel left in the engine
+     * @param maxFuelLevel the engine's maximum level of fuel 
+     */
     public Engine(FuelType f, double currentFuelLevel, double maxFuelLevel) {
         this.f = f;
         this.currentFuelLevel = currentFuelLevel;
         this.maxFuelLevel = maxFuelLevel;
     }
 
-    //Accessor
+    /**
+     * Accessor for fuel type
+     * @return the engine's fuel type
+     */
     public FuelType getFuelType() {
         return this.f;
     }
 
-    //Accessor
+    /**
+     * Accessor for the cars's maximum fuel level
+     * @return the cars's maximum fuel level
+     */
     public double getMaxFuel() {
         return this.maxFuelLevel;
     }
 
-    //Accessor
+    /**
+     * Accessor for the car's current fuel level
+     * @return the car's current fuel level
+     */
     public double getCurrentFuel() {
         return this.currentFuelLevel;
     }
@@ -43,10 +57,7 @@ public class Engine implements EngineRequirements {
         System.out.println("remaining fuel level: " + this.currentFuelLevel);
         if (this.currentFuelLevel > 0) {
             return true;
-        }
-        else {
-            return false;
-        }
+        } return false;
     }
 
     public String toString() {
