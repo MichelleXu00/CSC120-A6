@@ -12,13 +12,15 @@ public class TrainTest {
 
     @Test
     public void testEngineGo() {
-        assertEquals(90, myEngine.go());
+        assertSame(90, myEngine.getCurrentFuel());
     }
 
     // Car Tests
-    Car myCar = new Car(100);
+    Car myCar = new Car(3);
     Passenger michelle = new Passenger("Michelle");
     Passenger cathy = new Passenger("Cathy");
+    Passenger rachel = new Passenger("Rachel");
+    Passenger alice = new Passenger("Alice");
     @Test
     public void testCarAddPassenger() {
         myCar.addPassenger(michelle);
@@ -36,12 +38,16 @@ public class TrainTest {
     // Passenger Tests
     @Test
     public void testPassengerBoardCarWithSpace() {
-        assertTrue(myCar.seatsRemaining() < 0);
+        michelle.boardCar(myCar);
+        assertTrue(myCar.seatsRemaining() < myCar.getCapacity());
     }
 
-    @Test
+    @Test (expected = Exception.class)
     public void testPassengerBoardCarFull() {
-        assertTrue(myCar.seatsRemaining() <= 0);
+        michelle.boardCar(myCar);
+        cathy.boardCar(myCar);
+        rachel.boardCar(myCar);
+        alice.boardCar(myCar);
     }
 
     // Train Tests
@@ -65,5 +71,4 @@ public class TrainTest {
     public void testTrainPrintManifest() {
         assertSame(michelle, myTrain.getCar(0));
     }
-    
 }
